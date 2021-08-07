@@ -1,0 +1,18 @@
+html, body { width: 100%; height: 100%; font-family: 'IBM Plex Sans', sans-serif; background-color: #eee8d5; color: #657b83; display: flex; flex-direction: column; justify-content: center; align-items: center }
+
+body.dark { background-color: #657b83; color: #eee8d5 }
+
+div.grid { flex-wrap: wrap; width: 570px }
+div.grid.visible { display: flex }
+div.grid.hidden { display: none }
+div.grid button.cell { width: 23px; height: 23px; border: 2px solid #657b83; box-shadow: 3px 3px #657b83; margin: 3px }
+div.grid button.cell:active { box-shadow: 1px 1px #657b83 }
+div.grid button.cell.dark { border: 2px solid #eee8d5; box-shadow: 3px 3px #eee8d5 }
+div.grid button.cell.dark:active { box-shadow: 1px 1px #eee8d5 }
+div.grid button.cell.p1 { background-color: #dc322f; border-color: #dc322f }
+div.grid button.cell.p2 { background-color: #859900; border-color: #859900 }
+
+div.widget { border: 2px solid #657b83; box-shadow: 3px 3px #657b83; padding: 10px 40px; flex-direction: column; justify-content: center; align-items: center }
+div.widget.dark { border: 2px solid #eee8d5; box-shadow: 3px 3px #eee8d5 }
+div.widget.hidden { display: none }
+div.widget.visible { display: none }
