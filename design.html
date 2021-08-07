@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Gomoku Design</h1>
+<h2>Table of Contents</h2>
+<a href="#1. Introduction">1. Introduction</a><br>
+<a href="#1.1. Purpose">1.1. Purpose</a><br>
+<a href="#1.2. Scope">1.2. Scope</a><br>
+<a href="#1.3. References">1.3. References</a><br>
+<a href="#2. Planned Implementation">2. Planned Implementation</a><br>
+<a href="#2.1. Choice of Language">2.1. Choice of Language</a><br>
+<a href="#2.1.1 Previously Planned Language">2.1.1. Previously Planned Language</a><br>
+<a href="#2.2. Intermediate Server">2.2. Intermediate Server</a><br>
+<a href="#2.3. Development Team">2.3. Development Team</a><br>
+<a href="#2.4. Integration">2.4. Integration</a><br>
+<a href="#3. Decomposition Description">3. Decomposition Description</a><br>
+<a href="#3.1. Model Class Diagram">3.1. Model Class Diagram</a><br>
+<a href="#4. Interface Descriptions">4. Interface Descriptions</a><br>
+<a href="#4.1. Color Guidelines">4.1. Color Guidelines</a><br>
+<a href="#4.2. Font Guidelines">4.2. Font Guidelines</a><br>
+<a href="#4.3. Module interface">4.3. Module interface</a><br>
+<a href="#4.3.1. nameMenu">4.3.1. nameMenu</a><br>
+<a href="#4.3.2. playMenu">4.3.2. playMenu</a><br>
+<a href="#4.3.3. playScreen">4.3.3. playScreen</a><br>
+<a href="#5. Detailed design">5. Detailed design</a><br>
+<a href="#5.1. Module detailed design">5.1. Module Detailed Design</a><br>
+<a href="#5.2. Grill class">5.2. Grill class</a><br>
+<a href="#5.3. AI class">5.3. AI class</a><br>
+<a href="#6. Maintenance">6. Maintenance</a><br>
+
+  
+  
+<h2>1. Introduction<a name="1. Introduction"></a>
+</h2>
+<p>It is assumed that all users of the application have access to a modern browser with JavaScript and React support (virtually all popular mainstream browsers including Chrome, Safari, Firefox, etc.). The application is a progressive web application, accessible through modern web browsers.</p>
+<h3>1.1 Purpose<a name="1.1. Purpose"></a></h3>
+<p>The purpose of the design document is to outline the architecture and system design of <em>Gomoku&nbsp;</em>and it's components</p>
+<h3>1.2 Scope<a name="1.2. Scope"></a></h3>
+<p>The document is intended to be used by developers to reference during the development process of the application.</p>
+<h3>1.3 References<a name="1.3. References"></a></h3>
+<ul>
+<li>SPMP document for&nbsp;<em>Gomoku</em></li>
+<li>Analysis document for&nbsp;<em>Gomoku</em></li>
+</ul>
+<h2>2. Planned Implementation<a name="2. Planned Implementation"></a></h2>
+<h3>2.1 Choice of Language<a name="2.1. Choice of Language"></a></h3>
+<p><strong>Backend: </strong>The backend language of choice will be JavaScript (NodeJS) with the Express backend framework. NodeJS and Express provides an excellent environment for developing web applications, allowing for developers to quickly render application templates to HTML, as well as providing necessary facilities for interfacing with any needed dependencies.</p>
+<p><strong>Frontend: </strong>The frontend language of choice will be Javascript with the React frontend library. React is easy to use and very flexible, which is perfect for creating visually appealing, scalable and fast user interfaces. Additionally, the use of JavaScript in both frontend and backend ensures that developers are familiar with both frontend and backend code as well as seamlessly switch between the two. <strong><br /></strong></p>
+<h3>2.1.1 Previous Planned Language<a name="2.1.1. Previously Planned Language"></a></h3>
+<p><strong>Backend: </strong>The previously planned backend language was Python with Flask. We decided to switch to NodeJS with Express due to it's versatility, speed, and to improve compatability with the frontend.</p>
+<p><strong>Frontend: </strong>The previously planned frontend language was C compiled with WASM. This was switched to JavaScript with the React library as it's easier to use and has improved compatibility with the backend. </p>
+<h3>2.2 Intermediate Server<a name="2.2. Intermediate Server"></a></h3>
+<p>After the initial MVP release an intermediate server will be required to implement multiplayer. The intermediate server will be implemented using JavaScript with SocketIO to facilitate bi-directional communication.</p>
+<h3>2.3 Development Team<a name="2.3. Development Team"></a></h3>
+<p><strong>Backend: </strong>Zehao Liu, Xing Jia, Jonatham Chang, Chen Jin, Yongtai Yang</p>
+<p><strong>Frontend: </strong>Zehao Liu, Xing Jia, Chen Jin, Ning Nan</p>
+<h3>2.4 Integration<a name="2.4. Integration"></a></h3>
+<p>The frontend and backend development teams will be responsible for facilitating the communication between. After the initial MVP release it will be the backend team's job to write the intermediate server to facilitate mutliplayer communication.</p>
+<h2>3. Decomposition Description<a name="3. Decomposition Description"></a></h2>
+<h3>3.1 Model Class Diagram</h3>
+<p><div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/eebd0158-5b59-4d58-bb92-3bd3cadb540e" id="aAXVULowTMPp"></iframe></div></p>  
+<h2>4. Interface Descriptions<a name="4. Interface Descriptions"></a></h2>
+<h3>4.1 Color Guidelines<a name="4.1. Color Guidelines"></a></h3>
+<img src="colorguide.PNG" alt="colorguide">
+<h3>4.2 Font Guidelines<a name="4.2. Font Guidelines"></a></h3>
+<ul>
+<li>IBM Plex Sans</li>
+</ul>
+<h3>4.3 Module interface <a name="4.3. Module interface"></a></h3>
+<h3>4.3.1 nameMenu<a name="4.3.1. nameMenu"></a></h3>
+<img src="name.PNG" alt="name">
+<table style="border: 1px solid #000000; border-collapse: collapse;">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>username</th>
+        <th>Text Input</th>
+        <th>Allows the player to assign themselves a username</th>
+    </tr>     
+</table>
+
+<h3>4.3.2 playMenu<a name="4.3.2. playMenu"></a></h3>
+<img src="menu.PNG" alt="menu">
+<table style="border: 1px solid #000000; border-collapse: collapse;">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>play-local</th>
+        <th>button</th>
+        <th>begins a local match</th>
+    </tr>
+    <tr>
+        <th>play-online</th>
+        <th>button</th>
+        <th>begins matchmaking for an online match</th>
+    </tr>        
+</table>
+
+<h3>4.3.3 gameScreen<a name="4.3.3. gameScreen"></a></h3>
+<img src="game.PNG" alt="game">
+<table style="border: 1px solid #000000; border-collapse: collapse;">
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <th>forfeit</th>
+        <th>button</th>
+        <th>ends the game session and returns the player to menu screen</th>
+    </tr>
+</table>
+
+
+<h2>5. Detailed Design<a name="5. Detailed design"></a></h2>
+<h3>5.1. Module Detailed Design<a name="5.1. Module Detailed Design"></a></h3>
+<p> This section will describe the module design detail. Each interface and internal function
+which is implemented by a module or process will be described along with the steps
+followed to get from input to output, with the use of high level pseudocode. This
+pseudocode will be helpful in order to translate it into actual code during the
+implementation stage.</p>
+
+<h3>5.2. Grill class<a name="5.2. Grill class"></a></h3>
+<p>In the Grill class, it most describes the attributes of the board of the Gomoku such as height, width, color and the point that has been chosen by an AI or human player. And it will detect if any player is winning or not.</p>
+
+<h3>5.3. AI class<a name="5.3. AI class"></a></h3>
+<p>The AI class contains the AI Gomoku algorithms to evaluate each step the AI takes,<br>
+  and to decide which point to choose will generate the best result.<br>
+<hr>
+negamax(is_ai, depth, alpha, beta)<br>
+.  Parameter:
+ <ul>
+  <li>is_ai: to flag if its AI's move</li>
+  <li>Depth: to define the depth of searching</li>
+  <li>Alpha: the max value that a pattern could have</li>
+  <li>Beta: the min value that a pattern could have</li>
+  </ul>
+.  To search which position to move will generate the best result<br>
+<hr>
+has_neighbor(node)<br>
+.  Parameter<br>
+ <ul>
+   <li>Node: the location of the chosen point</li>
+ </ul>
+.  To find if other node is adjacent to the given node<br>
+<hr>
+cal_score()<br>
+.   To evaluate the move by giving each different situation a value,<br>
+    and compare the current situation with those hardcoded situations.<br>
+<hr>
+evaluation()<br>
+  .   To calculate the difference between two player's score
+<hr>
+
+<h2>6. Maintenance<a name="6. Maintenance"></a></h2>
+<ol>
+<li>Adaptive: Gomoku is web-based application. Therefore it has to work perfectly on all mainstream browsers such as Safari, Chrome, Firefox, Internet Explorer, and Microsoft Edge, etc.</li>
+<li>Corrective: A &ldquo;Report to Us&rdquo; icon will be placed in our application interface that allows user to report any issues they encounter in the game. If it&rsquo;s users&rsquo; personal issues, the implementation team will contact the user through email to provide feedback within 3 days. If there is a large amount of similar feedbacks, our implementation team will conduct temporary maintenance and upgrade to the whole website.</li>
+<li>Perfective: Due to time constraints, in order to ensure that the application can be successfully executed, we will give priority to the development of the main features and functionalities of the application. Once the program becomes more reliable through constant maintenance, we will develop and launch more features and functionalities to make the game more playable. In addition, a survey will be conducted on a regular basis to collect feedbacks to improve user experience. We will consider all things suggested by users and launch new features based on popularity of the recommendations.</li>
+</ol>
+<p style="padding-left: 40px;">Some examples of features that is on the shortlist to be implemented in the application is listed below:</p>
+<p style="padding-left: 40px;">- More colours and theme that allows user to customize by themselves</p>
+<p style="padding-left: 40px;">- Player&rsquo;s historical record</p>
+<p style="padding-left: 40px;">- Auditorium: A feature that allows other users to watch the game</p>
+<hr>
+<h3 align="center">Contributors</h3>
+<p align="center"><i>
+    Chen Jin, Student No. 170631720 <br>
+    Xing Jia, Student No. 180164170 <br>
+    Huiqiao Yang, Student No. 186803710 <br>
+    Yongtai Yang, Student No. 190624980 <br>
+    Mengyuan Liu, Student No. 186802750 <br>
+    Zehao Liu, Student No. 193074000 <br>
+    Ning Nan, Student No. 193064800 <br>
+    Tony Yoon, Student No. 170475670 <br>
+    Shaojun Zheng, Student No. 190665650 <br>
+    Ruicheng Zhao, Student No. 190519490</i> <br>
+    Wilfrid Laurier University</p>
+</body>
+</html>

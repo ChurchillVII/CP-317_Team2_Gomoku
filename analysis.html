@@ -1,0 +1,247 @@
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Fri Jul  2 12:17:36 2021 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>Gomoku Analysis</title>
+
+</head>
+<body>
+
+<h1 align="center">Gomoku Analysis</h1>
+
+<a href="#1. Introduction">1. Introduction</a><br>
+<a href="#1.1. Project Summary">1.1. Project Summary</a><br>
+<a href="#1.2. Project Purpose">1.2. Project Purpose</a><br>
+<a href="#2. Object Classification">2. Object Classification</a><br>
+<a href="#2.1. Object Diagram">2.1. Object Diagram</a><br>
+<a href="#2.2. Object Description">2.2. Object Description</a><br>
+<a href="#2.2.1. Static data">2.2.1. Static data</a><br>
+<a href="#2.2.2. Static Functions">2.2.2. Static Functions</a><br>
+<a href="#2.2.3. Exposed Functions">2.2.3. Exposed Functions</a><br>
+<a href="#3. Further Steps">3. Further Steps</a><br>
+<a href="#3.1. Event Loop">3.1. Event Loop</a><br>
+<a href="#4. Non Functional Attributes">4. Non Functional Attributes</a><br>
+<a href="#5. Classes">5. Classes</a><br>
+
+<hr>
+
+
+<p align="center"><i>Benjamin Raskin, Student No. 180312330
+<br>
+Chen Jin, Student No. 170631720 <br>
+Xing Jia, Student No. 180164170 <br>
+Huiqiao Yang, Student No. 186803710 <br>
+Yongtai Yang, Student No. 190624980 <br>
+Mengyuan Liu, Student No. 186802750 <br>
+Zehao Liu, Student No. 193074000 <br>
+Ning Nan, Student No. 193064800 <br>
+Tony Yoon, Student No. 170475670 <br>
+Shaojun Zheng, Student No. 190665650 <br>
+Ruicheng Zhao, Student No. 190519490</i> <br>
+Wilfrid Laurier University</p>
+
+<h2>1. Introduction
+<a name="1. Introduction"></a>
+</h2>
+
+
+<h3>1.1. Project Summary
+<a name="1.1. Project Summary"></a>
+</h3>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is an web based
+implementation of the classic Gomoku game. See the
+requirements document for details on project as well as
+Gomokue game.</p>
+
+<h3>1.2. Project Purpose
+<a name="1.2. Project Purpose"></a>
+</h3>
+
+
+<p style="margin-top: 1em">This document will cover the
+analysis of the requirements to implement the <i>Gomoku</i>
+project as well as how they work.</p>
+
+<h2>2. Object Classification
+<a name="2. Object Classification"></a>
+</h2>
+
+
+<p style="margin-top: 1em"><b>NOTE</b> The project is built
+using C, an imperative language, thus functions are used
+instead of objects.</p>
+
+<h3>2.1. Object Diagram
+<a name="2.1. Object Diagram"></a>
+</h3>
+
+
+<img src="classes.png">
+
+<h3>2.2. Object Description
+<a name="2.2. Object Description"></a>
+</h3>
+
+
+<h4>2.2.1. Static data
+<a name="2.2.1. Static data"></a>
+</h4>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">table - Table representing board
+upon which game is played</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">player - Current player
+state</p> </td></tr>
+</table>
+
+<h4>2.2.2. Static Functions
+<a name="2.2.2. Static Functions"></a>
+</h4>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">neighbor - Get neighboring cell
+in a direction</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">consecutve - Get consecutive
+similar cells in a direction</p></td></tr>
+</table>
+
+<h4>2.2.3. Exposed Functions
+<a name="2.2.3. Exposed Functions"></a>
+</h4>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">set - Set Nth cell to current
+player state</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">win - Determine if a current
+player won based on Nth cell</p></td></tr>
+</table>
+
+<h2>3. Further Steps
+<a name="3. Further Steps"></a>
+</h2>
+
+
+<h3>3.1. Event Loop
+<a name="3.1. Event Loop"></a>
+</h3>
+
+
+<img src="eventloop.png">
+
+<h2>4. Non Functional Attributes
+<a name="4. Non Functional Attributes"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">User will begin playing the game
+as soon as the page is done loading</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">User will end playing when game
+indicates as such</p></td></tr>
+</table>
+
+<h2>5. Classes
+<a name="5. Classes"></a>
+</h2>
+
+
+<p style="margin-top: 1em"><b>NOTE</b> The project is built
+using C, an imperative language, thus functions are used
+instead of objects.</p>
+
+<img src="uml.png">
+<hr>
+</body>
+</html>
