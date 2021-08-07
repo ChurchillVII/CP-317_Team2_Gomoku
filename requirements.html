@@ -1,0 +1,451 @@
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Fri May 28 12:07:45 2021 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>Gomoku Project Requirements</title>
+
+</head>
+<body>
+
+<h1 align="center">Gomoku Project Requirements</h1>
+
+<a href="#1. Introduction">1. Introduction</a><br>
+<a href="#1.1. Project Summary">1.1. Project Summary</a><br>
+<a href="#1.2. Purpose">1.2. Purpose</a><br>
+<a href="#1.3. Target Audience">1.3. Target Audience</a><br>
+<a href="#1.4. Scope and Business Model">1.4. Scope and Business Model</a><br>
+<a href="#1.4.1. Scope">1.4.1. Scope</a><br>
+<a href="#1.4.2. Business Model">1.4.2. Business Model</a><br>
+<a href="#1.5. Definitions">1.5. Definitions</a><br>
+<a href="#1.5.1. Gomoku Terminology">1.5.1. Gomoku Terminology</a><br>
+<a href="#1.5.2. Acronyms and Abbreviations">1.5.2. Acronyms and Abbreviations</a><br>
+<a href="#2. Overall Description">2. Overall Description</a><br>
+<a href="#2.1. Game Description">2.1. Game Description</a><br>
+<a href="#2.2. Product Description">2.2. Product Description</a><br>
+<a href="#2.3. Product Functions">2.3. Product Functions</a><br>
+<a href="#2.4. Sample GUI">2.4. Sample GUI</a><br>
+<a href="#2.5. Intended User">2.5. Intended User</a><br>
+<a href="#2.6. Constraints">2.6. Constraints</a><br>
+<a href="#3. Technical Requirements">3. Technical Requirements</a><br>
+<a href="#3.1. External Interface">3.1. External Interface</a><br>
+<a href="#3.2. Logic and Functions">3.2. Logic and Functions</a><br>
+<a href="#3.3. Portability">3.3. Portability</a><br>
+<a href="#4. Non-MVP Goals">4. Non-MVP Goals</a><br>
+<a href="#5. External Links">5. External Links</a><br>
+
+<hr>
+
+
+<p align="center"><i>Benjamin Raskin, Student No. 180312330
+<br>
+Chen Jin, Student No. 170631720 <br>
+Xing Jia, Student No. 180164170 <br>
+Huiqiao Yang, Student No. 186803710 <br>
+Yongtai Yang, Student No. 190624980 <br>
+Mengyuan Liu, Student No. 186802750 <br>
+Zehao Liu, Student No. 193074000 <br>
+Ning Nan, Student No. 193064800</i> <br>
+Wilfrid Laurier University</p>
+
+<h2>1. Introduction
+<a name="1. Introduction"></a>
+</h2>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is a web-based
+strategy board game played between two people. The purpose
+of this game simulation is to practice our group working
+ability and learn new components through the work. It is a
+strategy game which is easy to understand in game logic so
+that people at any age are suitable to play this game.
+People will train their logical thinking and have fun in
+this game.</p>
+
+<h3>1.1. Project Summary
+<a name="1.1. Project Summary"></a>
+</h3>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is an
+implementation of the classic Gomoku game. The game is
+implemented as a progressive web application powered by WASM
+for better performance.</p>
+
+<h3>1.2. Purpose
+<a name="1.2. Purpose"></a>
+</h3>
+
+
+<p style="margin-top: 1em">This document covers all of the
+project requirements and details that are needed for the
+project to work.</p>
+
+<h3>1.3. Target Audience
+<a name="1.3. Target Audience"></a>
+</h3>
+
+
+<p style="margin-top: 1em">The target audience of the
+applicataion are casual gomoku players who wish to play the
+game with another person via computer. Another target
+audience is programmers and enthusiasts as the application
+is an experiment to see the capabilities of WASM.</p>
+
+<h3>1.4. Scope and Business Model
+<a name="1.4. Scope and Business Model"></a>
+</h3>
+
+
+<h4>1.4.1. Scope
+<a name="1.4.1. Scope"></a>
+</h4>
+
+
+<p style="margin-top: 1em">Gomoku is a web application
+which allows for users to play Gomoku against other players
+locally, or against AI (non-MVP goal). The goal is to create
+a no-frills, user friendly and accessible web application
+for both casual Gomoku players as well as enthusiasts.</p>
+
+<p style="margin-top: 1em">This document covers all of the
+functional features of <i>Gomoku</i> and the basic plans for
+the process of implementation and non-functional features of
+the project.</p>
+
+<h4>1.4.2. Business Model
+<a name="1.4.2. Business Model"></a>
+</h4>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is Free Software
+licensed under the GPLv3 and protected by Copyleft. Anyone
+can use <i>Gomoku</i> for any purpose, as well as inspect,
+edit, and share the source code.</p>
+
+<h3>1.5. Definitions
+<a name="1.5. Definitions"></a>
+</h3>
+
+
+<h4>1.5.1. Gomoku Terminology
+<a name="1.5.1. Gomoku Terminology"></a>
+</h4>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>Black</b> The player who have
+black pieces</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>White</b> The player who have
+white pieces</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>Opening</b> Start the game.
+Black put the first piece.</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>Drop</b> Put the piece in the
+checkboard</p> </td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>Round</b> Each side walks one
+time, which is called a round.</p></td></tr>
+</table>
+
+<h4>1.5.2. Acronyms and Abbreviations
+<a name="1.5.2. Acronyms and Abbreviations"></a>
+</h4>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>WASM</b> Web assembly, a
+binary format and runtime environment for low level code in
+the browser</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>MVP</b> Minimum Viable
+Product</p> </td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><b>Gomoku</b> The application in
+development, see introduction for full description</p></td></tr>
+</table>
+
+<h2>2. Overall Description
+<a name="2. Overall Description"></a>
+</h2>
+
+
+<h3>2.1. Game Description
+<a name="2.1. Game Description"></a>
+</h3>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> also called
+&quot;Five points&quot;. Gomoku is played by two players.
+Similar to the Tic Tac Toe game, but with a larger board and
+five pieces of the same color must be connected to win. At
+the beginning of the game, black puts the piece first, and
+then the two players alternately place the pieces. The
+players need to use a same color and connect five identical
+pieces to win.</p>
+
+<h3>2.2. Product Description
+<a name="2.2. Product Description"></a>
+</h3>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is a progressive
+web application with the game logic (neighbor cell
+calculation, consecutive similar cell calculation) being
+powered by WASM.</p>
+
+<h3>2.3. Product Functions
+<a name="2.3. Product Functions"></a>
+</h3>
+
+
+<p style="margin-top: 1em">The user will be able to play a
+game of Gomoku with another user sitting at the same
+computer. The users will take turns playing turns until a
+winner emerges.</p>
+
+<h3>2.4. Sample GUI
+<a name="2.4. Sample GUI"></a>
+</h3>
+
+
+<p style="margin-top: 1em">See sample GUI below.</p>
+<img src="/gomoku/gomoku.png">
+
+<h3>2.5. Intended User
+<a name="2.5. Intended User"></a>
+</h3>
+
+
+<p style="margin-top: 1em">The user of <i>Gomoku</i> must
+fit the following characteristics:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">The user must be aware of the
+rules of the game Gomoku</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">The user must have access to a
+computer with a graphical shell</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em">The user must have access to a
+modern web browser with WASM support</p></td></tr>
+</table>
+
+<h3>2.6. Constraints
+<a name="2.6. Constraints"></a>
+</h3>
+
+
+<p style="margin-top: 1em"><i>Gomoku</i> is designed to run
+in modern web browsers which support WASM. Browsers which
+lack support for WASM will not be able to properly run
+<i>Gomoku</i> as the majority of the game logic is
+implemented through WASM.</p>
+
+<h2>3. Technical Requirements
+<a name="3. Technical Requirements"></a>
+</h2>
+
+
+<h3>3.1. External Interface
+<a name="3.1. External Interface"></a>
+</h3>
+
+
+<p style="margin-top: 1em">The external interface for the
+application consists of a single page progressive
+application. The user is presented with a nineteen by
+nineteen grid upon which the game is played.</p>
+
+<h3>3.2. Logic and Functions
+<a name="3.2. Logic and Functions"></a>
+</h3>
+
+
+<p style="margin-top: 1em">The game logic will be
+implemented using WASM, that is moves and game state is
+calculated via a set of functions exposed to Javascript
+through WASM bindings. The logic of the game consists of
+determining which user&rsquo;s turn it is as well as whether
+or not a user has won the game. Javascript code will invoke
+the game logic functions through WASM bindings to progress
+the game and to draw the corresponding players on the
+grid.</p>
+
+<h3>3.3. Portability
+<a name="3.3. Portability"></a>
+</h3>
+
+
+<p style="margin-top: 1em">Since the game is played in the
+browser, and WASM is now a browser standard the application
+is portable through and through on all modern web
+browsers.</p>
+
+<h2>4. Non-MVP Goals
+<a name="4. Non-MVP Goals"></a>
+</h2>
+
+
+<p style="margin-top: 1em">All previous features discussed
+are part of the project MVP. Other features will be
+implemented upon completing the MVP before the given
+deadline, including the following (in priority order):</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="82%">
+
+
+<p style="margin-top: 1em">An AI opponent to play against
+the player</p></td>
+<td width="14%">
+</td></tr>
+</table>
+
+<h2>5. External Links
+<a name="5. External Links"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+
+<p style="margin-top: 1em"><i>https://en.wikipedia.org/wiki/Gomoku</i>
+Gomoku article</p></td></tr>
+<tr valign="top" align="left">
+<td width="2%">
+
+
+<p style="margin-top: 1em">&bull;</p></td>
+<td width="2%"></td>
+<td width="96%">
+
+
+<p style="margin-top: 1em"><i>https://webassembly.org/</i>
+WASM Information</p></td></tr>
+ </table>
+<hr>
+</body>
+</html>
